@@ -1,13 +1,17 @@
 ''' Imports : Doubly-Linked Lists '''
 from pyllist import dllist, dllistnode
 
+# 12
+
 ''' Variables '''
 lst = dllist([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 reference_string = []
 page_faults = 0
 page_frames = []
 page_frames_length = 3
-count = 0
+
+''' Modify this value to display a specific page fault '''
+seek_page_fault = 110
 
 ''' Parse Information '''
 text_file = open("data.txt", "r")
@@ -16,9 +20,6 @@ reference_string = list(map(int, reference_string))
 
 ''' LRU '''
 for item in reference_string:
-    count += 1
-    if page_faults == 109:
-        print(lst)
     # modify stack
     for node in lst.iternodes():
         if node.value == item:
@@ -34,16 +35,14 @@ for item in reference_string:
         page_faults += 1
         assert(len(page_frames) <= 3)
     else:
-        if page_faults == 109:
+        if page_faults == seek_page_fault - 1:
             print(f'{page_frames}')
         val = lst.nodeat(page_frames_length).value
         index = page_frames.index(val)
         page_frames[index] = item
         page_faults += 1
-    if page_faults == 110:
-        print(lst)
-        print(f'{item} replaced {val} \t {page_frames}')
+    if page_faults == seek_page_fault:
+        print(f'{page_frames}')
+        print(f'{item} replaced {val}')
 
-
-# print(f'{count}')
-# print(f'{page_faults}')
+print(f'pgfaults -> {page_faults}')

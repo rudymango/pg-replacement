@@ -1,13 +1,21 @@
 # Page Replacement Algorithms
 
-## FIFO
-```bash
-python3 fifo.py
-```
-returns 110th pagefault replacement information as well as the final array:
+## Usage
 
+### FIFO
 ```bash
-[4, 5, 9]
-6 replaced 4: [5, 9, 6]
-page_faults: 219
+python3 fifo_0.py
 ```
+
+### LRU
+```bash
+python3 lru_0.py
+```
+
+### OPT
+```bash
+python3 opt_0.py
+```
+
+## Modification
+Consistant modification across all programs is still in progress. However, one can usually change the desired dataset by modifying "data.txt", and locate where the desire page fault is called to change which page fault will be displayed.
