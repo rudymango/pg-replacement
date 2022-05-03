@@ -3,9 +3,9 @@
 At the beginning of every program, there are some user variables that can be modified to change the outcome of the program.
 
 ```python3
-len_pgframes = 3                        # set amount of frames
+len_pgframes = 3                          # set amount of frames
 desired_page_fault = 110                  # 0 for no pgfaults
-parse = 1                               # 1 to parse from data.txt
+parse = 1                                 # 1 to parse from data.txt
 ```
 
 ## Usage
