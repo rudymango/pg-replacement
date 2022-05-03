@@ -1,6 +1,6 @@
 # Page Replacement Algorithms
 
-At the beginning of every program, there are some user variables that can be modified to change the outcome of the program.
+At the beginning of every program, there are some user variables that can be modified to change its outcome.
 
 ```python3
 len_pgframes = 3                          # set amount of frames
