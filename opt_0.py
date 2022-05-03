@@ -1,13 +1,17 @@
 ''' Variables '''
-reference_string = []
+reference_string = [7, 2, 3, 1, 2, 5, 3, 4, 6, 7, 7, 1, 0, 5, 4, 6, 2, 3, 0, 1]
 pgframe = []
 foundindex = []
 length = 3
 
-''' Parse Information '''
-text_file = open("data.txt", "r")
-reference_string = text_file.read().split('  ')
-reference_string = list(map(int, reference_string))
+''' you know what to do '''
+seek_page_fault = 9
+
+
+# ''' Parse Information '''
+# text_file = open("data.txt", "r")
+# reference_string = text_file.read().split('  ')
+# reference_string = list(map(int, reference_string))
 
 def cmp(x, y):
     if x > y:
@@ -38,13 +42,13 @@ for i in range(len(reference_string)):
         # print(f'searchlist \t {searchlist}')
         furthest = cmp(cmp(searchlist[0], searchlist[1]), cmp(searchlist[1], searchlist[2]))
         index = searchlist.index(furthest)
-        if pgfault == 109:
+        if pgfault == seek_page_fault - 1:
             print(f'{reference_string[i]} replaces {pgframe[index]}')
-            print(f'{pgframe}')
+            # print(f'{pgframe}')
         pgframe[index] = reference_string[i]
         foundindex[index] = i
         pgfault += 1
-        if pgfault == 110:
-            print(f'{pgframe}')
+        # if pgfault == seek_page_fault:
+        #     print(f'{pgframe}')
 
 print(f'pgfault -> {pgfault}')
