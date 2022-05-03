@@ -1,7 +1,7 @@
 ''' USER CHANGE DATA '''
 len_pgframes = 3                # set amount of frames
-parse = 0                       # 1 for parse from data.txt
-desired_page_fault = 9          # 0 for no pgfaults
+desired_page_fault = 110          # 0 for no pgfaults
+parse = 1                       # 1 for parse from data.txt
 ''' END USER CHANGE DATA '''
 
 reference_string = []

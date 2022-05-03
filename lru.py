@@ -2,30 +2,28 @@
 from pyllist import dllist, dllistnode
 
 ''' USER CHANGE DATA '''
-lst = dllist([0, 1, 2, 3, 4, 5, 6, 7])
-len_pgframes = 3
-desired_page_fault = 9
+lst = dllist([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])  # make sure that this linked list includes all pages in reference_string
+len_pgframes = 3                        # set amount of frames
+desired_page_fault = 110                  # 0 for no pgfaults
+parse = 1                               # 1 = parse from data.txt
 ''' END USER CHANGE DATA '''
 
-''' Variables '''
-reference_string = [7, 2, 3, 1, 2, 5, 3, 4, 6, 7, 7, 1, 0, 5, 4, 6, 2, 3, 0, 1]
 page_faults = 0
 page_frames = []
 
-# ''' Parse Information '''
-# text_file = open("data.txt", "r")
-# reference_string = text_file.read().split('  ')
-# reference_string = list(map(int, reference_string))
+if parse == 1:
+    text_file = open("data.txt", "r")
+    reference_string = text_file.read().split('  ')
+    reference_string = list(map(int, reference_string))
+else:
+    reference_string = [7, 2, 3, 1, 2, 5, 3, 4, 6, 7, 7, 1, 0, 5, 4, 6, 2, 3, 0, 1]
 
-''' LRU '''
 for item in reference_string:
-    # modify stack
     for node in lst.iternodes():
         if node.value == item:
             lst.remove(node)
             lst.appendleft(item)
             break
-    # page replacement
     exists = item in page_frames
     if exists:
         continue
